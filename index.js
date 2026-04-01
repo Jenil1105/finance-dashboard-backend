@@ -3,6 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
+const { authenticateUser } = require("./middlewares/authenticateUser");
+const { checkRoleAccess } = require("./middlewares/checkRoleAccess");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,7 +14,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/auth', authRouter);
-app.use('/api/user', userRouter);
+
+//only admin can access the all users
+app.use('/api/user', authenticateUser, checkRoleAccess('admin'), userRouter);
 
 mongoose.connect(MONGO_URI)
     .then(()=>{

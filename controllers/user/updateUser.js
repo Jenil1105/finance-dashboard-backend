@@ -1,4 +1,4 @@
-const User = require("../../models/user");
+const User = require("../../models/user.model");
 
 const updateUser = async (req, res)=>{
     try{
@@ -8,6 +8,17 @@ const updateUser = async (req, res)=>{
         const user = await User.findById(id);
         if(!user) {
             return res.status(404).json({message:"User not found"});
+        }
+        //role validation
+        const validRoles = ['viewer', 'analyst', 'operator', 'admin']
+        if (role && !validRoles.includes(role)) {
+            return res.status(400).json({ message: 'Invalid role' });
+        }
+
+        //status validation
+        const validStatus = ['active', 'inactive'];
+        if (status && !validStatus.includes(status)) {
+            return res.status(400).json({ message: 'Invalid status' });
         }
 
         if(name) user.name = name;
