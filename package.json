@@ -1,0 +1,24 @@
+{
+  "name": "finance-dashboard-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jenil1105/finance-dashboard-backend.git"
+  },
+  "author": "Jenil Savaj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jenil1105/finance-dashboard-backend/issues"
+  },
+  "homepage": "https://github.com/Jenil1105/finance-dashboard-backend#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.3.3"
+  }
+}
