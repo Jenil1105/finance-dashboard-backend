@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.get('/', getRecords);
 router.post('/', checkRoleAccess('operator','admin'), createRecord);
+router.patch('/auht')
 
 module.exports = router;
